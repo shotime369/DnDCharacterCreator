@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class DnD_dice {
+public class DnD_CC {
 
     //menus
     public static void raceMenu() {
