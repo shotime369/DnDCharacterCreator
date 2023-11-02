@@ -4,11 +4,11 @@ public class chars {
 
         character char1 = new character();
 //setters
-        //char1.setRace("");
+        char1.setRace("Dwarf");
         char1.setCls("Barbarian");
 
 //getters
-        System.out.println(char1.getCls());
+        System.out.println(char1.getCls()+char1.getRace());
     }
 }
 

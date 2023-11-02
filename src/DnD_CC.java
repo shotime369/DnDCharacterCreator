@@ -26,35 +26,6 @@ public class DnD_CC {
         System.out.print("Select your option: ");
         return sc.nextInt();
     }
-    public static void chooseCls() {
-        System.out.println("\nChoose your class");
-        clsMenu();
-        String cls;
-        int option2 = getOption();
-        switch (option2) {
-            case 1 -> {
-                cls = "Barbarian";
-                barb();
-            }
-            case 2 -> {
-                cls = "Fighter";
-                fight();
-            }
-            case 3 -> {
-                cls = "Rogue";
-                rogue();
-            }
-            case 4 -> {
-                cls = "Wizard";
-                wiz();
-            }
-            default -> {
-                cls = "Not an option";
-                System.out.println(cls);
-                chooseCls();
-            }
-        }
-    }
     public static void chooseRace() {
         System.out.println("\nChoose your race");
         raceMenu();
@@ -84,6 +55,42 @@ public class DnD_CC {
             }
         }
     }
+    public static void chooseCls() {
+        System.out.println("\nChoose your class");
+        String cls;
+        clsMenu();
+        int option2 = getOption();
+        switch (option2) {
+            case 1: {
+                cls = "Barbarian";
+                barb();
+                break;
+            }
+            case 2: {
+                cls = "Fighter";
+                fight();
+                break;
+            }
+            case 3: {
+                cls = "Rogue";
+                rogue();
+                break;
+            }
+            case 4: {
+                cls = "Wizard";
+                wiz();
+                break;
+            }
+            default: {
+                cls = "Not an option";
+                System.out.println(cls);
+                clsMenu();
+                chooseCls();
+            }
+        }
+    }
+
+
     public static void option3(){
         System.out.println("""
                                     
@@ -197,8 +204,14 @@ public class DnD_CC {
         System.out.println("     ()xxxxx[[{:::::::::::::::::::::::::::::>");
         System.out.println("            [[     " + dnd);
 
+        String race = null;
+        String cls = null;
+
+character char2 = new character();
 chooseRace();
 chooseCls();
+        //char2.setCls(chooseCls(cls));
+        //System.out.println(char2.getRace());
 option3();
 abilitydice();
 

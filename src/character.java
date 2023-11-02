@@ -1,6 +1,4 @@
 public class character {
-    String name;
-    int age;
     String cls;
     String race;
     int strength;
@@ -8,9 +6,8 @@ public class character {
     int dexterity;
 
     // Constructor to initialize the person's information
-    public void Person(String cls, String race, String name, int age, int weight, int height, int strength, int charisma, int dexterity) {
-        this.name = name;
-        this.age = age;
+    public void Person(String race, String cls, int strength, int charisma, int dexterity) {
+
         this.cls = cls;
         this.race = race;
     }
@@ -26,17 +23,19 @@ public class character {
     public void setRace(String race) {
         this.race = race;
     }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
+
+
+    //public String getName() {
+     //   return name;
+    //}
+    //public void setName(String name) {
+     //   this.name = name;
+    //}
+    //public int getAge() {
+    //    return age;
+    //}
+   // public void setAge(int age) {
+     //   this.age = age;
+    //}
 }
 
