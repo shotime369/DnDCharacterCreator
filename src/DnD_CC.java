@@ -4,6 +4,14 @@ import java.util.Scanner;
 
 public class DnD_CC {
 
+//stats
+    static String cls;
+    static String race;
+    static int Con;
+    static int Int;
+    static int Dex;
+    static int Wis;
+    static int Cha;
     //menus
     public static void raceMenu() {
         System.out.println("""
@@ -29,7 +37,6 @@ public class DnD_CC {
     public static void chooseRace() {
         System.out.println("\nChoose your race");
         raceMenu();
-        String race;
         int option1 = getOption();
         switch (option1) {
             case 1 -> {
@@ -55,33 +62,32 @@ public class DnD_CC {
             }
         }
     }
+
+    //int cls 1 = barbarian??
+
+
     public static void chooseCls() {
         System.out.println("\nChoose your class");
-        String cls;
         clsMenu();
         int option2 = getOption();
         switch (option2) {
-            case 1: {
+            case 1 -> {
                 cls = "Barbarian";
                 barb();
-                break;
             }
-            case 2: {
+            case 2 -> {
                 cls = "Fighter";
                 fight();
-                break;
             }
-            case 3: {
+            case 3 -> {
                 cls = "Rogue";
                 rogue();
-                break;
             }
-            case 4: {
+            case 4 -> {
                 cls = "Wizard";
                 wiz();
-                break;
             }
-            default: {
+            default -> {
                 cls = "Not an option";
                 System.out.println(cls);
                 clsMenu();
@@ -115,44 +121,35 @@ public class DnD_CC {
 
     //races
     public static void dwarf() {
-        System.out.println("~~~ You have chosen Dwarf ~~~");
-        System.out.println("""
-                In mountains heart, where hammers fall,
-                Dwarves toil and feast in ancient halls,
-                With fulsome beards and hearts of stone,
-                Around the world, their tales are known.
-
-                They delve deep into earth's embrace,
-                Seeking treasures in the darkest place,
-                Resilient, proud, and stout they stand,
-                In dwarves' strong grip, a mighty land.""");
+        System.out.println("\n~~~ You have chosen Dwarf ~~~");
+        System.out.println("Kingdoms rich in ancient grandeur, halls carved into the roots of mountains,\n the echoing of picks and hammers in deep mines and blazing forges,\n a commitment to clan and tradition, and a burning hatred of goblins and orcs\n—these common threads unite all dwarves.");
     }
     public static void elf() {
-        System.out.println("~~~ You have chosen Elf ~~~");
+        System.out.println("\n~~~ You have chosen Elf ~~~");
         System.out.println("Elves are a magical people of otherworldly grace, living in the world but not entirely part of it.\n They live in places of ethereal beauty, in the midst of ancient forests or in silvery spires glittering with faerie light,\n where soft music drifts through the air and gentle fragrances waft on the breeze.\n Elves love nature and magic, art and artistry, music and poetry, and the good things of the world.");
 
     }
     public static void halfling() {
-        System.out.println("~~~ You have chosen Halfling ~~~");
+        System.out.println("\n~~~ You have chosen Halfling ~~~");
         System.out.println("");
     }
     public static void human() {
-        System.out.println("");
+        System.out.println("\n~~~ You have chosen Human ~~~");
     }
 
     //classes
     public static void barb() {
-        System.out.println("~~~ You have chosen Barbarian ~~~");
+        System.out.println("\n~~~ You have chosen Barbarian ~~~");
         System.out.println("Barbarians are fearless and relentless warriors,\nembracing their primal instincts to harness incredible strength and combat prowess.\nIn the heat of battle, they enter a state of Rage that grants them heightened abilities,\nmaking them formidable adversaries. With their signature unarmored combat style and resistance to damage,\nBarbarians epitomize raw power and resilience, making them essential assets to any adventuring party.");
     }
     public static void fight() {
-        System.out.println("");
+        System.out.println("\n~~~ You have chosen Fighter ~~~");
     }
     public static void rogue() {
-        System.out.println("");
+        System.out.println("\n~~~ You have chosen Rogue ~~~");
     }
     public static void wiz() {
-        System.out.println("");
+        System.out.println("\n~~~ You have chosen Wizard ~~~");
     }
 
     //dice roll maths
@@ -162,7 +159,7 @@ public class DnD_CC {
         System.out.print(Arrays.toString(array));
         return (array[1]+ array[2] + array[3]);
     }
-    public static void abilitydice(){
+    public static void abilityDice(){
 
         System.out.println("""
                 "Rolling Ability Scores..."\s
@@ -213,7 +210,7 @@ chooseCls();
         //char2.setCls(chooseCls(cls));
         //System.out.println(char2.getRace());
 option3();
-abilitydice();
+abilityDice();
 
 
         //System.out.println("\nYou have chosen "+ race + cls);
