@@ -7,11 +7,13 @@ public class DnD_CC {
 //stats
     static String cls;
     static String race;
+    static int Str;
     static int Con;
     static int Int;
     static int Dex;
     static int Wis;
     static int Cha;
+    static int[] abscores = new int[6];
     //menus
     public static void raceMenu() {
         System.out.println("""
@@ -98,10 +100,11 @@ public class DnD_CC {
 
 
     public static void option3(){
+        System.out.format("\nYou have chosen %s %s",race,cls);
         System.out.println("""
                                     
                                     Roll ability dice (1)\s
-                                    Start Again (2)\s
+                                    Start New Character (2)\s
                 """);
         int option3 = getOption();
         switch (option3) {
@@ -121,35 +124,35 @@ public class DnD_CC {
 
     //races
     public static void dwarf() {
-        System.out.println("\n~~~ You have chosen Dwarf ~~~");
-        System.out.println("Kingdoms rich in ancient grandeur, halls carved into the roots of mountains,\n the echoing of picks and hammers in deep mines and blazing forges,\n a commitment to clan and tradition, and a burning hatred of goblins and orcs\n—these common threads unite all dwarves.");
+        System.out.println("\n~~~ Dwarf ~~~");
+        System.out.println("Kingdoms rich in ancient grandeur, halls carved into the roots of mountains,\nthe echoing of picks and hammers in deep mines and blazing forges,\na commitment to clan and tradition, and a burning hatred of goblins and orcs\n—these common threads unite all dwarves.");
     }
     public static void elf() {
-        System.out.println("\n~~~ You have chosen Elf ~~~");
-        System.out.println("Elves are a magical people of otherworldly grace, living in the world but not entirely part of it.\n They live in places of ethereal beauty, in the midst of ancient forests or in silvery spires glittering with faerie light,\n where soft music drifts through the air and gentle fragrances waft on the breeze.\n Elves love nature and magic, art and artistry, music and poetry, and the good things of the world.");
+        System.out.println("\n~~~ Elf ~~~");
+        System.out.println("Elves are a magical people of otherworldly grace, living in the world but not entirely part of it.\nThey live in places of ethereal beauty, in the midst of ancient forests or in silvery spires glittering with faerie light,\nwhere soft music drifts through the air and gentle fragrances waft on the breeze.\n Elves love nature and magic, art and artistry, music and poetry, and the good things of the world.");
 
     }
     public static void halfling() {
-        System.out.println("\n~~~ You have chosen Halfling ~~~");
+        System.out.println("\n~~~ Halfling ~~~");
         System.out.println("");
     }
     public static void human() {
-        System.out.println("\n~~~ You have chosen Human ~~~");
+        System.out.println("\n~~~ Human ~~~");
     }
 
     //classes
     public static void barb() {
-        System.out.println("\n~~~ You have chosen Barbarian ~~~");
+        System.out.println("\n~~~ Barbarian ~~~");
         System.out.println("Barbarians are fearless and relentless warriors,\nembracing their primal instincts to harness incredible strength and combat prowess.\nIn the heat of battle, they enter a state of Rage that grants them heightened abilities,\nmaking them formidable adversaries. With their signature unarmored combat style and resistance to damage,\nBarbarians epitomize raw power and resilience, making them essential assets to any adventuring party.");
     }
     public static void fight() {
-        System.out.println("\n~~~ You have chosen Fighter ~~~");
+        System.out.println("\n~~~ Fighter ~~~");
     }
     public static void rogue() {
-        System.out.println("\n~~~ You have chosen Rogue ~~~");
+        System.out.println("\n~~~ Rogue ~~~");
     }
     public static void wiz() {
-        System.out.println("\n~~~ You have chosen Wizard ~~~");
+        System.out.println("\n~~~ Wizard ~~~");
     }
 
     //dice roll maths
@@ -161,9 +164,7 @@ public class DnD_CC {
     }
     public static void abilityDice(){
 
-        System.out.println("""
-                "Rolling Ability Scores..."\s
-                """);
+        System.out.println("\nRolling Ability Scores...\n");
         Random rand = new Random();
         // create arrays for each dice set
         int[] diceset1 = new int[4];
@@ -185,13 +186,51 @@ public class DnD_CC {
         }
 
 //print sum of highest 3 rolls
-        System.out.println(" Dice roll 1: " + findHighestThree(diceset1));
-        System.out.println(" Dice roll 2: " + findHighestThree(diceset2));
-        System.out.println(" Dice roll 3: " + findHighestThree(diceset3));
-        System.out.println(" Dice roll 4: " + findHighestThree(diceset4));
-        System.out.println(" Dice roll 5: " + findHighestThree(diceset5));
-        System.out.println(" Dice roll 6: " + findHighestThree(diceset6));
+        int d1 = findHighestThree(diceset1);
+        System.out.println(" Dice roll 1: " + d1);
+        int d2 = findHighestThree(diceset2);
+        System.out.println(" Dice roll 2: " + d2);
+        int d3 = findHighestThree(diceset3);
+        System.out.println(" Dice roll 3: " + d3);
+        int d4 = findHighestThree(diceset4);
+        System.out.println(" Dice roll 4: " + d4);
+        int d5 = findHighestThree(diceset5);
+        System.out.println(" Dice roll 5: " + d5);
+        int d6 = findHighestThree(diceset6);
+        System.out.println(" Dice roll 6: " + d6);
 
+       abscores[0] = d1;
+       abscores[1] = d2;
+       abscores[2] = d3;
+       abscores[3] = d4;
+       abscores[4] = d5;
+       abscores[5] = d6;
+    }
+
+    public static void abilityScore(){
+        System.out.println("\nAssign each of your ability scores to Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("scores unassigned: "+ Arrays.toString(abscores));
+        System.out.print("Strength: ");
+        int Str = sc.nextInt();
+        System.out.print("Dexterity: ");
+        int Dex = sc.nextInt();
+        System.out.print("Constitution: ");
+        int Con = sc.nextInt();
+        System.out.print("Intelligence: ");
+        int Int = sc.nextInt();
+        System.out.print("Wisdom: ");
+        int Wis = sc.nextInt();
+        System.out.print("Charisma: ");
+        int Cha = sc.nextInt();
+    }
+    public static void abilityScore2() {
+        System.out.println("Strength: " + Str);
+        System.out.println("Dexterity: " + Dex);
+        System.out.println("Constitution: " + Con);
+        System.out.println("Intelligence: " + Int);
+        System.out.println("Wisdom: " + Wis);
+        System.out.println("Charisma:" + Cha);
     }
 
 //𝕯&𝕯 𝕮𝖍𝖆𝖗𝖆𝖈𝖙𝖊𝖗 𝕮𝖗𝖊𝖆𝖙𝖔𝖗
@@ -201,27 +240,16 @@ public class DnD_CC {
         System.out.println("     ()xxxxx[[{:::::::::::::::::::::::::::::>");
         System.out.println("            [[     " + dnd);
 
-        String race = null;
-        String cls = null;
+//character char2 = new character();
 
-character char2 = new character();
 chooseRace();
 chooseCls();
-        //char2.setCls(chooseCls(cls));
-        //System.out.println(char2.getRace());
 option3();
 abilityDice();
+abilityScore();
+abilityScore2();
 
 
-        //System.out.println("\nYou have chosen "+ race + cls);
-//Now take your six numbers and write each number beside one of your character’s six abilities to assign scores to
-// Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma.
-        System.out.println("Assign each of your ability scores to Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma");
-        //Scanner sc = new Scanner(System.in);
-        System.out.println("Strength: ");
-        //int Stre = sc.nextInt();
-        System.out.println("Dexterity: ");
-        //int Dex = sc.nextInt();
             }
         }
 
