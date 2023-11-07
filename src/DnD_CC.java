@@ -207,12 +207,15 @@ public class DnD_CC {
        abscores[5] = d6;
     }
 
+
     public static void abilityScore(){
         System.out.println("\nAssign each of your ability scores to Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma");
         Scanner sc = new Scanner(System.in);
         System.out.println("scores unassigned: "+ Arrays.toString(abscores));
         System.out.print("Strength: ");
         int Str = sc.nextInt();
+
+        //check if input is in array - if yes, remove that int from the array - if no, ask for input again
         System.out.print("Dexterity: ");
         int Dex = sc.nextInt();
         System.out.print("Constitution: ");
