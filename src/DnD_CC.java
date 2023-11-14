@@ -267,77 +267,40 @@ public class DnD_CC {
     }
 
     public static void editList(int scorescore){
-        if (containsAbscore(scorescore)) {
             removeListInt(scorescore);
-        } else {
-            System.out.println("Invalid input. Please choose a value from the list.");
-        }
     }
 
     public static void abilityScore(){
         System.out.println("\nAssign each of your ability scores to Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma");
      //str
         getStrength();
-        editList(Str);
-        while (!containsAbscore(Str)) {
-            getStrength();
+        if (containsAbscore(Str)) {
             editList(Str);
-        }
+    } else {
+        System.out.println("Invalid input. Please choose a value from the list.");
+    }
+
         //dex
         getDex();
         editList(Dex);
-        while (!containsAbscore(Dex)) {
-            getDex();
-            editList(Dex);
-        }
-
 
         //con
         getCon();
-        if (containsAbscore(Con)) {
-            removeListInt(Con);
-        } else {
-            System.out.println("Invalid input. Please choose a value from the list.");
-            while (!containsAbscore(Con)) {
-                getCon();
-            }
-            removeListInt(Con);
-        }
+        editList(Con);
+
         //int
         getInt();
-        if (containsAbscore(Int)) {
-            removeListInt(Int);
-        } else {
-            System.out.println("Invalid input. Please choose a value from the list.");
-            while (!containsAbscore(Int)) {
-                getInt();
-            }
-            removeListInt(Int);
-        }
+        editList(Int);
+
         //wis
         getWis();
-        if (containsAbscore(Wis)) {
-            removeListInt(Wis);
-        } else {
-            System.out.println("Invalid input. Please choose a value from the list.");
-            while (!containsAbscore(Wis)) {
-                getInt();
-            }
-            removeListInt(Wis);
-        }
-        //cha
-        getCha();
-        if (containsAbscore(Cha)) {
-            removeListInt(Cha);
-        } else {
-            System.out.println("Invalid input. Please choose a value from the list.");
-            while (!containsAbscore(Cha)) {
-                getInt();
-            }
-            removeListInt(Cha);
-        }
+        editList(Wis);
 
-    }
+            //cha
+        getCha();
+        editList(Cha);
+
+            }
 
     public static void removeListInt(int score){
         abscoreslist.remove(Integer.valueOf(score));
