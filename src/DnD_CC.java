@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,7 +14,15 @@ public class DnD_CC {
     static int Dex;
     static int Wis;
     static int Cha;
+    static int d1;
+    static int d2;
+    static int d3;
+    static int d4;
+    static int d5;
+    static int d6;
+
     static int[] abscores = new int[6];
+    static LinkedList<Integer> abscoreslist = new LinkedList<Integer>();
     //menus
     public static void raceMenu() {
         System.out.println("""
@@ -186,55 +195,186 @@ public class DnD_CC {
         }
 
 //print sum of highest 3 rolls
-        int d1 = findHighestThree(diceset1);
+        d1 = findHighestThree(diceset1);
         System.out.println(" Dice roll 1: " + d1);
-        int d2 = findHighestThree(diceset2);
+        d2 = findHighestThree(diceset2);
         System.out.println(" Dice roll 2: " + d2);
-        int d3 = findHighestThree(diceset3);
+        d3 = findHighestThree(diceset3);
         System.out.println(" Dice roll 3: " + d3);
-        int d4 = findHighestThree(diceset4);
+        d4 = findHighestThree(diceset4);
         System.out.println(" Dice roll 4: " + d4);
-        int d5 = findHighestThree(diceset5);
+        d5 = findHighestThree(diceset5);
         System.out.println(" Dice roll 5: " + d5);
-        int d6 = findHighestThree(diceset6);
+        d6 = findHighestThree(diceset6);
         System.out.println(" Dice roll 6: " + d6);
 
+        //make an array of the highest three dice rolls added together
        abscores[0] = d1;
        abscores[1] = d2;
        abscores[2] = d3;
        abscores[3] = d4;
        abscores[4] = d5;
        abscores[5] = d6;
+
+       //using a linked list so that I can remove first instance as we go through
+        abscoreslist.addLast(d1);
+        abscoreslist.addLast(d2);
+        abscoreslist.addLast(d3);
+        abscoreslist.addLast(d4);
+        abscoreslist.addLast(d5);
+        abscoreslist.addLast(d6);
     }
 
+    private static boolean containsAbscore(int value) {
+        return abscoreslist.contains(value);
+    }
+
+    public static void getStrength(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("scores unassigned: "+abscoreslist);
+        System.out.print("Strength: ");
+        Str = sc.nextInt();
+    }
+    public static void getDex() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("scores unassigned: " + abscoreslist);
+        System.out.print("Dexterity: ");
+        Dex = sc.nextInt();
+    }
+    public static void getCon(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("scores unassigned: "+abscoreslist);
+        System.out.print("Constitution: ");
+        Con = sc.nextInt();
+    }
+    public static void getInt(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("scores unassigned: "+abscoreslist);
+        System.out.print("Intelligence: ");
+        Int = sc.nextInt();
+    }
+    public static void getWis(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("scores unassigned: "+abscoreslist);
+        System.out.print("Wisdom: ");
+        Wis = sc.nextInt();
+    }
+    public static void getCha(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("scores unassigned: "+abscoreslist);
+        System.out.print("Charisma: ");
+        Cha = sc.nextInt();
+    }
+
+    public static void editList(int scorescore){
+        if (containsAbscore(scorescore)) {
+            removeListInt(scorescore);
+        } else {
+            System.out.println("Invalid input. Please choose a value from the list.");
+        }
+    }
 
     public static void abilityScore(){
         System.out.println("\nAssign each of your ability scores to Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("scores unassigned: "+ Arrays.toString(abscores));
-        System.out.print("Strength: ");
-        int Str = sc.nextInt();
+     //str
+        getStrength();
+        editList(Str);
+        while (!containsAbscore(Str)) {
+            getStrength();
+            editList(Str);
+        }
+        //dex
+        getDex();
+        editList(Dex);
+        while (!containsAbscore(Dex)) {
+            getDex();
+            editList(Dex);
+        }
 
-        //check if input is in array - if yes, remove that int from the array - if no, ask for input again
-        System.out.print("Dexterity: ");
-        int Dex = sc.nextInt();
-        System.out.print("Constitution: ");
-        int Con = sc.nextInt();
-        System.out.print("Intelligence: ");
-        int Int = sc.nextInt();
-        System.out.print("Wisdom: ");
-        int Wis = sc.nextInt();
-        System.out.print("Charisma: ");
-        int Cha = sc.nextInt();
+
+        //con
+        getCon();
+        if (containsAbscore(Con)) {
+            removeListInt(Con);
+        } else {
+            System.out.println("Invalid input. Please choose a value from the list.");
+            while (!containsAbscore(Con)) {
+                getCon();
+            }
+            removeListInt(Con);
+        }
+        //int
+        getInt();
+        if (containsAbscore(Int)) {
+            removeListInt(Int);
+        } else {
+            System.out.println("Invalid input. Please choose a value from the list.");
+            while (!containsAbscore(Int)) {
+                getInt();
+            }
+            removeListInt(Int);
+        }
+        //wis
+        getWis();
+        if (containsAbscore(Wis)) {
+            removeListInt(Wis);
+        } else {
+            System.out.println("Invalid input. Please choose a value from the list.");
+            while (!containsAbscore(Wis)) {
+                getInt();
+            }
+            removeListInt(Wis);
+        }
+        //cha
+        getCha();
+        if (containsAbscore(Cha)) {
+            removeListInt(Cha);
+        } else {
+            System.out.println("Invalid input. Please choose a value from the list.");
+            while (!containsAbscore(Cha)) {
+                getInt();
+            }
+            removeListInt(Cha);
+        }
+
     }
-    public static void abilityScore2() {
+
+    public static void removeListInt(int score){
+        abscoreslist.remove(Integer.valueOf(score));
+    }
+
+    public static void option4(){
+        System.out.println("\uD83D\uDDE1Ability Scores\uD83D\uDDE1");
         System.out.println("Strength: " + Str);
         System.out.println("Dexterity: " + Dex);
         System.out.println("Constitution: " + Con);
         System.out.println("Intelligence: " + Int);
         System.out.println("Wisdom: " + Wis);
         System.out.println("Charisma:" + Cha);
+
+        System.out.println("""
+                                    
+                                    Save Scores (1)\s
+                                    Reassign Scores (2)\s
+                """);
+        int option4 = getOption();
+        switch (option4) {
+            case 1 -> {
+            }
+            case 2 -> {
+                //this doesn't work yet as I need to reset the list somehow without breaking it
+                abilityScore();
+            }
+            default -> {
+                System.out.println("Not an option");
+                option4();
+
+            }
+        }
     }
+
+
+
 
 //𝕯&𝕯 𝕮𝖍𝖆𝖗𝖆𝖈𝖙𝖊𝖗 𝕮𝖗𝖊𝖆𝖙𝖔𝖗
     public static void main(String[] args) {
@@ -250,8 +390,7 @@ chooseCls();
 option3();
 abilityDice();
 abilityScore();
-abilityScore2();
-
+option4();
 
             }
         }
