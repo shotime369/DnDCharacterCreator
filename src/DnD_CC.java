@@ -279,7 +279,7 @@ public class DnD_CC {
     } else {
         System.out.println("Invalid input. Please choose a value from the list.");
     }
-
+//this is unfinished - need to put it error handling and recursion on a failed entry
         //dex
         getDex();
         editList(Dex);
